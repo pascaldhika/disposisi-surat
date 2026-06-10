@@ -82,7 +82,7 @@
                                 <x-input-form name="name" :label="__('model.user.name')" :value="$data->name" />
                             </div>
                             <div class="col-md-6">
-                                <x-input-form name="email" :label="__('model.user.email')" :value="$data->email" />
+                                <x-input-form name="username" :label="__('model.user.username')" :value="$data->username" />
                             </div>
                             <div class="col-md-6">
                                 <x-input-form name="phone" :label="__('model.user.phone')" :value="$data->phone ?? ''" />

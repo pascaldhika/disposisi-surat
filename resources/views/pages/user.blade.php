@@ -8,7 +8,7 @@
             $('#editModal input:hidden#id').val(id);
             $('#editModal input#name').val($(this).data('name'));
             $('#editModal input#phone').val($(this).data('phone'));
-            $('#editModal input#email').val($(this).data('email'));
+            $('#editModal input#username').val($(this).data('username'));
             if ($(this).data('active') == 1) {
                 $('#editModal input#is_active').attr('checked', 1)
             } else {
@@ -36,7 +36,7 @@
                 <thead>
                 <tr>
                     <th>{{ __('model.user.name') }}</th>
-                    <th>{{ __('model.user.email') }}</th>
+                    <th>{{ __('model.user.username') }}</th>
                     <th>{{ __('model.user.phone') }}</th>
                     <th>{{ __('model.user.is_active') }}</th>
                     <th>{{ __('menu.general.action') }}</th>
@@ -47,7 +47,7 @@
                     @foreach($data as $user)
                         <tr>
                             <td>{{ $user->name }}</td>
-                            <td>{{ $user->email }}</td>
+                            <td>{{ $user->username }}</td>
                             <td>{{ $user->phone }}</td>
                             <td><span
                                     class="badge bg-label-primary me-1">{{  __('model.user.' . ($user->is_active ? 'active' : 'nonactive')) }}</span>
@@ -56,7 +56,7 @@
                                 <button class="btn btn-info btn-sm btn-edit"
                                         data-id="{{ $user->id }}"
                                         data-name="{{ $user->name }}"
-                                        data-email="{{ $user->email }}"
+                                        data-username="{{ $user->username }}"
                                         data-phone="{{ $user->phone }}"
                                         data-active="{{ $user->is_active }}"
                                         data-bs-toggle="modal"
@@ -85,7 +85,7 @@
                 <tfoot class="table-border-bottom-0">
                 <tr>
                     <th>{{ __('model.user.name') }}</th>
-                    <th>{{ __('model.user.email') }}</th>
+                    <th>{{ __('model.user.username') }}</th>
                     <th>{{ __('model.user.phone') }}</th>
                     <th>{{ __('model.user.is_active') }}</th>
                     <th>{{ __('menu.general.action') }}</th>
@@ -113,7 +113,7 @@
                 </div>
                 <div class="modal-body">
                     <x-input-form name="name" :label="__('model.user.name')"/>
-                    <x-input-form name="email" :label="__('model.user.email')" type="email"/>
+                    <x-input-form name="username" :label="__('model.user.username')"/>
                     <x-input-form name="phone" :label="__('model.user.phone')"/>
                 </div>
                 <div class="modal-footer">
@@ -144,7 +144,7 @@
                 <div class="modal-body">
                     <input type="hidden" name="id" id="id" value="">
                     <x-input-form name="name" :label="__('model.user.name')"/>
-                    <x-input-form name="email" :label="__('model.user.email')" type="email"/>
+                    <x-input-form name="username" :label="__('model.user.username')"/>
                     <x-input-form name="phone" :label="__('model.user.phone')"/>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" name="is_active" value="true" id="is_active">

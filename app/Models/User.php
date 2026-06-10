@@ -22,7 +22,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
-        'email',
+        'username',
         'password',
         'phone',
         'role',
@@ -83,7 +83,7 @@ class User extends Authenticatable
             return $query
                 ->where('name', 'LIKE', $find . '%')
                 ->orWhere('phone', $find)
-                ->orWhere('email', $find);
+                ->orWhere('username', $find);
         });
     }
 

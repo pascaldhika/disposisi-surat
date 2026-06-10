@@ -67,7 +67,7 @@
                     <!-- Logo -->
                     <div class="app-brand justify-content-center">
                         <a href="{{ route('home') }}" class="app-brand-link gap-2">
-                            <img src="{{ asset('logo-black.png') }}" alt="{{ config('app.name') }}" srcset="" width="75px">
+                            <img src="{{ asset('logo.png') }}" alt="{{ config('app.name') }}" srcset="" width="150px">
                         </a>
                     </div>
 
@@ -75,9 +75,9 @@
                         @csrf
                         <div class="mb-3">
                             <x-input-form
-                                name="email"
-                                type="email"
-                                :label="__('model.user.email')"
+                                name="username"
+                                type="text"
+                                :label="__('model.user.username')"
                             />
                         </div>
                         <div class="mb-3">

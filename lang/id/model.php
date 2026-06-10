@@ -48,6 +48,7 @@ return [
         'active' => 'Aktif',
         'nonactive' => 'Nonaktif',
         'reset_password' => 'Setel ulang Kata Sandi menjadi bawaan?',
+        'username' => 'Username',
     ],
     'general' => [
         'created_at' => 'Dibuat pada',

@@ -25,7 +25,7 @@ class StoreUserRequest extends FormRequest
     {
         return [
             'name' => __('model.user.name'),
-            'email' => __('model.user.email'),
+            'username' => __('model.user.username'),
             'phone' => __('model.user.phone'),
         ];
     }
@@ -39,7 +39,7 @@ class StoreUserRequest extends FormRequest
     {
         return [
             'name' => ['required'],
-            'email' => ['required', Rule::unique('users')],
+            'username' => ['required', Rule::unique('users')],
             'phone' => ['nullable'],
         ];
     }
