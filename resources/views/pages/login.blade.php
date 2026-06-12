@@ -55,11 +55,18 @@
     <link rel="stylesheet" href="{{asset('sneat/vendor/css/pages/page-auth.css')}}"/>
 
     <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+        }
+
         body {
             background-image: url('{{ asset("background.png") }}');
             background-repeat: no-repeat;
+            background-position: center center;
             background-size: contain;
-            background-position: center;
         }
     </style>
 </head>
