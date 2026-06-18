@@ -4,8 +4,13 @@
             <div class="card-title">
                 <h5 class="text-nowrap mb-0 fw-bold">{{ $disposition->status?->status }}</h5>
                 <small>
+                    @php
+                        $penerimas = is_array($disposition->to)
+                            ? $disposition->to
+                            : json_decode($disposition->to, true) ?? [];
+                    @endphp
                     <ol>
-                        @foreach($disposition->to as $penerima)
+                        @foreach($penerimas as $penerima)
                             <li>{{ $penerima }}</li>
                         @endforeach
                     </ol>

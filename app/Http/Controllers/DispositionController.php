@@ -58,7 +58,7 @@ class DispositionController extends Controller
     {
         try {
             $newDisposition = $request->validated();
-            $newDisposition['to'] = 'Belum ada penerima';
+            $newDisposition['to'] = '[]';
             $newDisposition['user_id'] = auth()->user()->id;
             $newDisposition['letter_id'] = $letter->id;
             Disposition::create($newDisposition);

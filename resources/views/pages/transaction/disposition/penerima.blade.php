@@ -27,6 +27,13 @@
                         class="form-select select2"
                         multiple
                     >
+
+                        @php
+                            $penerimas = is_array($data->to)
+                                ? $data->to
+                                : json_decode($data->to, true) ?? [];
+                        @endphp
+                        
                         @foreach($employeesByDivision as $division => $employees)
 
                             <option
@@ -41,7 +48,7 @@
                                     value="{{ $employee->nama }}"
                                     data-type="employee"
                                     data-division="{{ $division }}"
-                                    @selected(in_array($employee->nama, $data->to))
+                                    @selected(in_array($employee->nama, $penerimas))
                                 >
                                     {{ $employee->nama }}
                                 </option>

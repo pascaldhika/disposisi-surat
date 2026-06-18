@@ -123,6 +123,7 @@ class IncomingLetterController extends Controller
                 'from' => $letter->from,
                 'letter_date' => $letter->letter_date,
                 'received_date' => $letter->received_date,
+                'description' => $letter->description,
             ];
 
             $images = [];
