@@ -169,6 +169,9 @@ class DispositionController extends Controller
             ];
 
             $images = [];
+            foreach($letter->attachments as $key => $attachment) {
+                $images[$key] = $attachment->filename;
+            }
             
             $emails = DB::connection('mysql_siapp')
                 ->table('karyawan')
