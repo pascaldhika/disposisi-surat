@@ -53,6 +53,7 @@ return [
         'success' => 'Berhasil',
         'fail' => 'Gagal',
         'doesnt_exists' => ":attribute tidak ada",
+        'penerima' => 'Penerima',
     ],
     'auth' => [
         'login' => 'Masuk',

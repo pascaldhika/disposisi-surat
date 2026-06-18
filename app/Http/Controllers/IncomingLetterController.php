@@ -14,6 +14,9 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use App\Mail\SuratMasukMail;
+use Illuminate\Support\Facades\DB;
+use Mail;
 
 class IncomingLetterController extends Controller
 {
@@ -90,6 +93,8 @@ class IncomingLetterController extends Controller
     public function store(StoreLetterRequest $request): RedirectResponse
     {
         try {
+            DB::beginTransaction();
+
             $user = auth()->user();
 
             if ($request->type != LetterType::INCOMING->type()) throw new \Exception(__('menu.transaction.incoming_letter'));
@@ -111,10 +116,35 @@ class IncomingLetterController extends Controller
                     ]);
                 }
             }
+
+            // Kirim email ke KUPT
+            $data = [
+                'reference_number' => $letter->reference_number,
+                'from' => $letter->from,
+                'letter_date' => $letter->letter_date,
+                'received_date' => $letter->received_date,
+            ];
+
+            $images = [];
+            foreach($letter->attachments as $key => $attachment) {
+                $images[$key] = $attachment->filename;
+            }
+            
+            $emails = DB::connection('mysql_siapp')
+                ->table('karyawan')
+                ->where('kupt', 'Y')
+                ->pluck('email')
+                ->toArray();
+
+            Mail::to($emails)->send(new SuratMasukMail($data, $images));
+            
+            DB::commit();
+
             return redirect()
                 ->route('transaction.incoming.index')
                 ->with('success', __('menu.general.success'));
         } catch (\Throwable $exception) {
+            DB::rollBack();
             return back()->with('error', $exception->getMessage());
         }
     }

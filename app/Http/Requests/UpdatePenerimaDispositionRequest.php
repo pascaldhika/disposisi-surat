@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateDispositionRequest extends FormRequest
+class UpdatePenerimaDispositionRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -19,11 +19,7 @@ class UpdateDispositionRequest extends FormRequest
     public function attributes(): array
     {
         return [
-            // 'to' => __('model.disposition.to'),
-            'content' => __('model.disposition.content'),
-            'due_date' => __('model.disposition.due_date'),
-            'letter_status' => __('model.disposition.status'),
-            'note' => __('model.disposition.note'),
+            'to' => __('model.disposition.to'),
         ];
     }
 
@@ -35,11 +31,7 @@ class UpdateDispositionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            // 'to' => ['required'],
-            'content' => ['required'],
-            'due_date' => ['required'],
-            'letter_status' => ['required'],
-            'note' => ['nullable'],
+            'to' => ['required'],
         ];
     }
 }

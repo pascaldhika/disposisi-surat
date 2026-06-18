@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Data Disposisi Surat</title>
+    <title>Data Surat Masuk</title>
 </head>
 
 <body style="margin:0; padding:0; background:#f4f6f9; font-family:Arial, Helvetica, sans-serif;">
@@ -16,8 +16,8 @@
                     <!-- HEADER -->
                     <tr>
                         <td style="background:#2c7be5; padding:25px; text-align:center; color:white;">
-                            <h2 style="margin:0;">Data Disposisi Surat</h2>
-                            <p style="margin:5px 0 0 0; font-size:14px;">Notifikasi Data Disposisi Surat Masuk</p>
+                            <h2 style="margin:0;">Data Surat Masuk</h2>
+                            <p style="margin:5px 0 0 0; font-size:14px;">Notifikasi Data Surat Masuk</p>
                         </td>
                     </tr>
 
@@ -26,7 +26,7 @@
                         <td style="padding:30px;">
 
                             <p style="color:#555; font-size:14px;">
-                            Berikut adalah data Disposisi yang telah dikirim melalui sistem:
+                            Berikut adalah data Surat Masuk yang telah dikirim melalui sistem:
                             </p>
 
                             <table width="100%" cellpadding="12" cellspacing="0" style="border-collapse:collapse; font-size:14px;">
@@ -52,8 +52,8 @@
                                 </tr>
 
                                 <tr style="background:#f8f9fa;">
-                                    <td><b>Isi Disposisi</b></td>
-                                    <td>{{ $data['content'] }}</td>
+                                    <td><b>Ringkasan</b></td>
+                                    <td>{{ $data['description'] }}</td>
                                 </tr>
 
                             </table>

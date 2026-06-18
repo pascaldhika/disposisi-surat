@@ -25,6 +25,10 @@ class Disposition extends Model
         'formatted_due_date',
     ];
 
+    protected $casts = [
+        'to' => 'array',
+    ];
+
     public function getFormattedDueDateAttribute(): string {
         return Carbon::parse($this->due_date)->isoFormat('dddd, D MMMM YYYY');
     }

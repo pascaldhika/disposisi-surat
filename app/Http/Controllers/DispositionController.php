@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreDispositionRequest;
 use App\Http\Requests\UpdateDispositionRequest;
+use App\Http\Requests\UpdatePenerimaDispositionRequest;
 use App\Models\Disposition;
 use App\Models\Letter;
 use App\Models\LetterStatus;
-use App\Models\Employee;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -41,16 +41,9 @@ class DispositionController extends Controller
      */
     public function create(Letter $letter): View
     {
-        $employeesByDivision = Employee::query()
-            ->orderBy('division')
-            ->orderBy('name')
-            ->get()
-            ->groupBy('division');
-
         return view('pages.transaction.disposition.create', [
             'letter' => $letter,
             'statuses' => LetterStatus::all(),
-            'employeesByDivision' => $employeesByDivision,
         ]);
     }
 
@@ -64,45 +57,15 @@ class DispositionController extends Controller
     public function store(StoreDispositionRequest $request, Letter $letter): RedirectResponse
     {
         try {
-            DB::beginTransaction();
-
             $newDisposition = $request->validated();
-
-            foreach ($request->to as $employee) {
-                Disposition::create([
-                    'user_id'       => auth()->user()->id,
-                    'letter_id'     => $letter->id,
-                    'to'            => $employee,
-                    'due_date'      => $newDisposition['due_date'],
-                    'content'       => $newDisposition['content'],
-                    'letter_status' => $newDisposition['letter_status'],
-                    'note'          => $newDisposition['note'] ?? null,
-                ]);
-            }
-
-            $data = [
-                'reference_number' => $letter->reference_number,
-                'from' => $letter->from,
-                'letter_date' => $letter->letter_date,
-                'received_date' => $letter->received_date,
-                'content' => $newDisposition['content'],
-            ];
-
-            $images = [];
-            
-            $emails = Employee::whereIn('name', (array) $request->to)
-                ->pluck('email')
-                ->toArray();
-
-            Mail::to($emails)->send(new DisposisiMail($data, $images));
-
-            DB::commit();
-
+            $newDisposition['to'] = 'Belum ada penerima';
+            $newDisposition['user_id'] = auth()->user()->id;
+            $newDisposition['letter_id'] = $letter->id;
+            Disposition::create($newDisposition);
             return redirect()
                 ->route('transaction.disposition.index', $letter)
                 ->with('success', __('menu.general.success'));
         } catch (\Throwable $exception) {
-            DB::rollBack();
             return back()->with('error', $exception->getMessage());
         }
     }
@@ -154,6 +117,74 @@ class DispositionController extends Controller
             $disposition->delete();
             return back()->with('success', __('menu.general.success'));
         } catch (\Throwable $exception) {
+            return back()->with('error', $exception->getMessage());
+        }
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param Letter $letter
+     * @param Disposition $disposition
+     * @return View
+     */
+    public function penerima(Letter $letter, Disposition $disposition): View
+    {
+        $employeesByDivision = DB::connection('mysql_siapp')
+            ->table('karyawan')
+            ->orderBy('divisi')
+            ->orderBy('nama')
+            ->get()
+            ->groupBy('divisi');
+
+        return view('pages.transaction.disposition.penerima', [
+            'data' => $disposition,
+            'letter' => $letter,
+            'statuses' => LetterStatus::all(),
+            'employeesByDivision' => $employeesByDivision,
+        ]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param UpdatePenerimaDispositionRequest $request
+     * @param Letter $letter
+     * @param Disposition $disposition
+     * @return RedirectResponse
+     */
+    public function update_penerima(UpdatePenerimaDispositionRequest $request, Letter $letter, Disposition $disposition): RedirectResponse
+    {
+        try {
+            DB::beginTransaction();
+
+            $disposition->update($request->validated());
+
+            $data = [
+                'reference_number' => $letter->reference_number,
+                'from' => $letter->from,
+                'letter_date' => $letter->letter_date,
+                'received_date' => $letter->received_date,
+                'content' => $disposition->content,
+            ];
+
+            $images = [];
+            
+            $emails = DB::connection('mysql_siapp')
+                ->table('karyawan')
+                ->whereIn('nama', (array) $request->to)
+                ->pluck('email')
+                ->toArray();
+
+            Mail::to($emails)->send(new DisposisiMail($data, $images));
+            
+            DB::commit();
+
+            return redirect()
+                ->route('transaction.disposition.index', $letter)
+                ->with('success', __('menu.general.success'));
+        } catch (\Throwable $exception) {
+            DB::rollBack();
             return back()->with('error', $exception->getMessage());
         }
     }

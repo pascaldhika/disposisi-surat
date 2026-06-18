@@ -9,7 +9,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class DisposisiMail extends Mailable
+class SuratMasukMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -28,7 +28,7 @@ class DisposisiMail extends Mailable
 
     public function build()
     {
-        $mail = $this->subject('Disposisi Surat')->view('emails.disposisi')
+        $mail = $this->subject('Surat Masuk')->view('emails.surat-masuk')
                  ->with('data', $this->data);
 
         foreach ($this->images as $image) {

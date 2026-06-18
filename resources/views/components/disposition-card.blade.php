@@ -3,7 +3,13 @@
         <div class="d-flex justify-content-between flex-column flex-sm-row">
             <div class="card-title">
                 <h5 class="text-nowrap mb-0 fw-bold">{{ $disposition->status?->status }}</h5>
-                <small class="text-black">{{ $disposition->to }}</small>
+                <small>
+                    <ol>
+                        @foreach($disposition->to as $penerima)
+                            <li>{{ $penerima }}</li>
+                        @endforeach
+                    </ol>
+                </small>
             </div>
             <div class="card-title d-flex flex-row">
                 <div class="d-inline-block mx-2 text-end text-black">
@@ -18,6 +24,8 @@
                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-disposition-{{ $disposition->id }}">
                         <a class="dropdown-item"
                            href="{{ route('transaction.disposition.edit', [$letter, $disposition]) }}">{{ __('menu.general.edit') }}</a>
+                           <a class="dropdown-item"
+                           href="{{ route('transaction.disposition.penerima', [$letter, $disposition]) }}">{{ __('menu.general.penerima') }}</a>
                         <form action="{{ route('transaction.disposition.destroy', [$letter, $disposition]) }}" class="d-inline"
                               method="post">
                             @csrf

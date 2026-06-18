@@ -19,7 +19,7 @@ class StoreDispositionRequest extends FormRequest
     public function attributes(): array
     {
         return [
-            'to' => __('model.disposition.to'),
+            // 'to' => __('model.disposition.to'),
             'content' => __('model.disposition.content'),
             'due_date' => __('model.disposition.due_date'),
             'letter_status' => __('model.disposition.status'),
@@ -35,7 +35,7 @@ class StoreDispositionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'to' => ['required'],
+            // 'to' => ['required'],
             'content' => ['required'],
             'due_date' => ['required'],
             'letter_status' => ['required'],
