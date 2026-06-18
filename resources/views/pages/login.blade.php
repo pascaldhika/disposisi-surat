@@ -59,13 +59,14 @@
             margin: 0;
             padding: 0;
             width: 100%;
-            height: 100%;
+            height: 100vh;
+            overflow: hidden;
         }
 
         body {
             background-image: url('{{ asset("background.png") }}');
             background-repeat: no-repeat;
-            background-position: center center;
+            background-position: center;
             background-size: contain;
         }
     </style>
