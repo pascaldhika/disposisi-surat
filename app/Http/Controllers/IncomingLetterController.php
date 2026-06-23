@@ -120,9 +120,10 @@ class IncomingLetterController extends Controller
             // Kirim email ke KUPT
             $data = [
                 'reference_number' => $letter->reference_number,
+                'agenda_number' => $letter->agenda_number,
                 'from' => $letter->from,
-                'letter_date' => $letter->letter_date,
-                'received_date' => $letter->received_date,
+                'letter_date' => $letter->formatted_letter_date,
+                'received_date' => $letter->formatted_received_date,
                 'description' => $letter->description,
             ];
 

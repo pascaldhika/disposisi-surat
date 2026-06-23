@@ -16,9 +16,6 @@
             @csrf
             @method('PUT')
             <div class="card-body row">
-                <!-- <div class="col-sm-12 col-12 col-md-6 col-lg-6">
-                    <x-input-form name="to" :value="$data->to" :label="__('model.disposition.to')"/>
-                </div> -->
                 <div class="col-sm-12 col-12 col-md-6 col-lg-6">
                     <x-input-form name="due_date" :value="date('Y-m-d', strtotime($data->due_date))" :label="__('model.disposition.due_date')" type="date"/>
                 </div>

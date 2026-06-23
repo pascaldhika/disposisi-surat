@@ -29,8 +29,10 @@
                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-disposition-{{ $disposition->id }}">
                         <a class="dropdown-item"
                            href="{{ route('transaction.disposition.edit', [$letter, $disposition]) }}">{{ __('menu.general.edit') }}</a>
-                           <a class="dropdown-item"
+                        <a class="dropdown-item"
                            href="{{ route('transaction.disposition.penerima', [$letter, $disposition]) }}">{{ __('menu.general.penerima') }}</a>
+                        <a class="dropdown-item"
+                           href="{{ route('transaction.disposition.print', [$letter, $disposition]) }}">{{ __('menu.general.print') }}</a>
                         <form action="{{ route('transaction.disposition.destroy', [$letter, $disposition]) }}" class="d-inline"
                               method="post">
                             @csrf

@@ -14,9 +14,6 @@
         <form action="{{ route('transaction.disposition.store', $letter) }}" method="POST">
             @csrf
             <div class="card-body row">
-                <!-- <div class="col-sm-12 col-12 col-md-6 col-lg-6">
-                    <x-input-form name="to" :label="__('model.disposition.to')"/>
-                </div> -->
                 <div class="col-sm-12 col-12 col-md-6 col-lg-6">
                     <x-input-form name="due_date" :label="__('model.disposition.due_date')" type="date"/>
                 </div>

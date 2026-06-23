@@ -44,6 +44,7 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('{letter}/disposition', \App\Http\Controllers\DispositionController::class)->except(['show']);
         Route::get('{letter}/disposition/{disposition}/penerima', [\App\Http\Controllers\DispositionController::class, 'penerima'])->name('disposition.penerima');
         Route::post('{letter}/disposition/{disposition}/update-penerima', [\App\Http\Controllers\DispositionController::class, 'update_penerima'])->name('disposition.update-penerima');
+        Route::get('{letter}/disposition/{disposition}/print', [\App\Http\Controllers\DispositionController::class, 'print'])->name('disposition.print');
     });
 
     Route::prefix('agenda')->as('agenda.')->group(function () {

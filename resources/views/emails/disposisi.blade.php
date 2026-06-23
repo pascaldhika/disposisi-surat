@@ -32,24 +32,24 @@
                             <table width="100%" cellpadding="12" cellspacing="0" style="border-collapse:collapse; font-size:14px;">
 
                                 <tr style="background:#f8f9fa;">
-                                    <td width="35%"><b>No Surat</b></td>
-                                    <td>{{ $data['reference_number'] }}</td>
-                                </tr>
-
-                                <tr style="background:#f8f9fa;">
-                                    <td><b>Pengirim</b></td>
-                                    <td>{{ $data['from'] }}</td>
-                                </tr>
-
-                                <tr style="background:#f8f9fa;">
-                                    <td><b>Tgl Surat</b></td>
+                                    <td><b>{{ __('model.letter.letter_date') }}</b></td>
                                     <td>{{ $data['letter_date'] }}</td>
                                 </tr>
 
                                 <tr style="background:#f8f9fa;">
-                                    <td><b>Tgl Diterima</b></td>
+                                    <td><b>{{ __('model.letter.received_date') }}</b></td>
                                     <td>{{ $data['received_date'] }}</td>
                                 </tr>
+
+                                <tr style="background:#f8f9fa;">
+                                    <td><b>{{ __('model.letter.reference_number') }}</b></td>
+                                    <td>{{ $data['reference_number'] }}</td>
+                                </tr>
+
+                                <tr style="background:#f8f9fa;">
+                                    <td><b>{{ __('model.letter.from') }}</b></td>
+                                    <td>{{ $data['from'] }}</td>
+                                </tr>                                
 
                                 <tr style="background:#f8f9fa;">
                                     <td><b>Isi Disposisi</b></td>

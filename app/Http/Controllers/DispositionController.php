@@ -162,9 +162,10 @@ class DispositionController extends Controller
 
             $data = [
                 'reference_number' => $letter->reference_number,
+                'agenda_number' => $letter->agenda_number,
                 'from' => $letter->from,
-                'letter_date' => $letter->letter_date,
-                'received_date' => $letter->received_date,
+                'letter_date' => $letter->formatted_letter_date,
+                'received_date' => $letter->formatted_received_date,
                 'content' => $disposition->content,
             ];
 
@@ -190,5 +191,20 @@ class DispositionController extends Controller
             DB::rollBack();
             return back()->with('error', $exception->getMessage());
         }
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param Letter $letter
+     * @param Disposition $disposition
+     * @return View
+     */
+    public function print(Letter $letter, Disposition $disposition): View
+    {
+        return view('pages.transaction.disposition.print', [
+            'data' => $disposition,
+            'letter' => $letter,
+        ]);
     }
 }
