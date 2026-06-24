@@ -65,3 +65,13 @@ Route::middleware(['auth'])->group(function () {
     });
 
 });
+
+Route::get('/files/{path}', function ($path) {
+    $path = storage_path('app/public/' . $path);
+
+    if (!file_exists($path)) {
+        abort(404);
+    }
+
+    return response()->file($path);
+})->where('path', '.*')->name('files.show');

@@ -75,7 +75,7 @@
             @if(count($letter->attachments))
                 <div>
                     @foreach($letter->attachments as $attachment)
-                        <a href="{{ $attachment->path_url }}" target="_blank">
+                        <a href="{{ route('files.show', ['path' => 'attachments/' . $attachment->filename]) }}" target="_blank">
                             @if($attachment->extension == 'pdf')
                                 <i class="bx bxs-file-pdf display-6 cursor-pointer text-primary"></i>
                             @elseif(in_array($attachment->extension, ['jpg', 'jpeg']))

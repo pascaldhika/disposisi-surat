@@ -214,7 +214,7 @@
                     </div>
 
                     <img class="signature"
-                        src="{{ asset('storage/attachments/ttd_kupt.png') }}"
+                        src="{{ route('files.show', ['path' => 'attachments/ttd_kupt.png']) }}"
                         alt="Tanda tangan">
 
                     Sartono, S.Sos<br>

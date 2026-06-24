@@ -58,7 +58,7 @@
                     <ul class="list-group">
                         @foreach($data->attachments as $attachment)
                             <li class="list-group-item d-flex justify-content-between align-items-center">
-                                <a href="{{ $attachment->path_url }}" target="_blank">{{ $attachment->filename }}</a>
+                                <a href="{{ route('files.show', ['path' => 'attachments/' . $attachment->filename]) }}" target="_blank">{{ $attachment->filename }}</a>
                                 <span
                                     class="badge bg-danger rounded-pill cursor-pointer btn-remove-attachment"
                                     data-id="{{ $attachment->id }}">
