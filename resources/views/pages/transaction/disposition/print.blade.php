@@ -154,26 +154,26 @@
 
                 <strong>Sifat:</strong><br>
 
-                <div style="display: flex; gap: 14px; align-items: center; margin-top: 6px;">
-                    <div style="white-space: nowrap;">
-                        <span class="checkbox">
+                <div style="display: flex; align-items: center; margin-top: 6px;">
+                    <div style="white-space: nowrap; margin-left: -10px; position: relative; top: -10px;">
+                        <span class="checkbox" style="border: none !important;">
                             {{ $data->letter_status === 1 ? '✓' : '' }}
                         </span>
-                        Sangat Segera
+                        <span style="visibility: hidden;">Sangat Segera</span>
                     </div>
 
-                    <div style="white-space: nowrap;">
-                        <span class="checkbox">
+                    <div style="white-space: nowrap; margin-left: 50px; position: relative; top: -10px;">
+                        <span class="checkbox" style="border: none !important;">
                             {{ $data->letter_status === 2 ? '✓' : '' }}
                         </span>
-                        Segera
+                        <span style="visibility: hidden;">Segera</span>
                     </div>
 
-                    <div style="white-space: nowrap;">
-                        <span class="checkbox">
+                    <div style="white-space: nowrap; margin-left: 50px; position: relative; top: -10px;">
+                        <span class="checkbox" style="border: none !important;">
                             {{ $data->letter_status === 3 ? '✓' : '' }}
                         </span>
-                        Rahasia
+                        <span style="visibility: hidden;">Rahasia</span>
                     </div>
                 </div>
             </td>
@@ -182,7 +182,10 @@
         <tr>
             <td colspan="3" style="height: 150px;">
                 <strong>Hal:</strong><br><br>
-                {{ $letter->description }}
+
+                <div style="padding-left: 50px;">
+                    {!! nl2br(e(wordwrap($letter->description, 30, "\n", true))) !!}
+                </div>
             </td>
         </tr>
 
@@ -206,17 +209,13 @@
 
                 <div style="float:right; width: 290px; text-align:center;">
                     <strong>Kepala UPT PPD</strong><br>
-                    <div style="margin-top: 50px;">
+                    <div style="margin-top: 40px;">
                         PONOROGO
                     </div>
 
-                    @if($letter->signature_path)
-                        <img class="signature"
-                             src="{{ asset('storage/' . $letter->signature_path) }}"
-                             alt="Tanda tangan">
-                    @else
-                        <br><br><br><br>
-                    @endif
+                    <img class="signature"
+                        src="{{ asset('storage/attachments/ttd_kupt.png') }}"
+                        alt="Tanda tangan">
 
                     Sartono, S.Sos<br>
                     Pembina (IV/a)<br>
@@ -226,5 +225,16 @@
         </tr>
     </table>
 </div>
+
+<script>
+    window.onload = function () {
+        window.print();
+    };
+
+    window.onafterprint = function () {
+        window.history.back();
+    };
+</script>
+
 </body>
 </html>
