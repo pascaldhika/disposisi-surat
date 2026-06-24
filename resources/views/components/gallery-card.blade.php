@@ -28,9 +28,9 @@
                 </button>
                 <div id="accordion-id-{{ str_replace('.', '-', $filename) }}" class="accordion-collapse collapse text-center" data-bs-parent="#accordion-{{ str_replace('.', '-', $filename) }}" style="">
                     @if(strtolower($extension) == 'pdf')
-                        <a class="btn my-3 btn-primary" download href="{{ $path }}">{{ __('menu.general.download') }}</a>
+                        <a class="btn my-3 btn-primary" download href="{{ route('files.show', ['path' => 'attachments/' . $filename]) }}">{{ __('menu.general.download') }}</a>
                     @elseif(in_array(strtolower($extension), ['jpg', 'jpeg', 'png']))
-                        <img src="{{ $path }}" width="100%" alt="Picture">
+                        <img src="{{ route('files.show', ['path' => 'attachments/' . $filename]) }}" width="100%" alt="Picture">
                     @endif
                 </div>
             </div>
