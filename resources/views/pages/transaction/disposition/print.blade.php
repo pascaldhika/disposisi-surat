@@ -207,7 +207,7 @@
 
                 <div style="float:right; width: 290px; text-align:center;">
                     <strong>Kepala UPT PPD</strong><br>
-                    <div style="margin-top: 20px;">
+                    <div style="margin-top: 30px;">
                         <b>PONOROGO</b>
                     </div>
 
