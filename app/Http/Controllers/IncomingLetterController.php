@@ -156,7 +156,7 @@ class IncomingLetterController extends Controller
                 ->pluck('email')
                 ->toArray();
 
-            Mail::to($emails)->send(new SuratMasukMail($data, $images));
+            // Mail::to($emails)->send(new SuratMasukMail($data, $images));
             
             DB::commit();
 
