@@ -54,6 +54,8 @@ return [
         'fail' => 'Gagal',
         'doesnt_exists' => ":attribute tidak ada",
         'penerima' => 'Penerima',
+        'belum_disposisi' => 'Tampilkan Surat Belum Disposisi',
+        'semua_surat' => 'Tampilkan Semua Surat',
     ],
     'auth' => [
         'login' => 'Masuk',

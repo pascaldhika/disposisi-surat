@@ -3,10 +3,14 @@
         <div class="d-flex justify-content-between flex-column flex-sm-row">
             <div class="card-title">
                 <h5 class="text-nowrap mb-0 fw-bold">{{ $letter->reference_number }}</h5>
-                <small class="text-black">
-                    {{ $letter->type == 'incoming' ? $letter->from : $letter->to }} |
+                <small class="text-black">                    
                     <span
                         class="text-secondary">{{ __('model.letter.agenda_number') }}:</span> {{ $letter->agenda_number }}
+                    |
+                    <span
+                        class="text-secondary">{{ __('model.letter.received_date') }}:</span> {{ $letter->formatted_received_date }}
+                    |
+                    {{ $letter->type == 'incoming' ? $letter->from : $letter->to }}
                     |
                     {{ $letter->classification?->type }}
                 </small>
@@ -19,7 +23,7 @@
                 @if($letter->type == 'incoming')
                     <div class="mx-3">
                         <a href="{{ route('transaction.disposition.index', $letter) }}"
-                           class="btn btn-primary btn">{{ __('model.letter.dispose') }} <span>({{ $letter->dispositions->count() }})</span></a>
+                           class="btn btn-{{ ($letter->dispositions->count() > 0) ? 'success' : 'warning' }} btn">{{ __('model.letter.dispose') }} <span>({{ $letter->dispositions->count() }})</span></a>
                     </div>
                 @endif
                 <div class="dropdown d-inline-block">

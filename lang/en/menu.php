@@ -53,7 +53,9 @@ return [
         'success' => 'Success',
         'fail' => 'Fail',
         'doesnt_exists' => ":attribute doesn't exists",
-        'penerima' => 'Receiver',
+        'receiver' => 'Receiver',
+        'without_disposition' => 'Show Letters Without Disposition',
+        'all_letters' => 'Show All Letters',
     ],
     'auth' => [
         'login' => 'Login',

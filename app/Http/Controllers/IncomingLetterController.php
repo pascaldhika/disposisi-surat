@@ -28,9 +28,19 @@ class IncomingLetterController extends Controller
      */
     public function index(Request $request): View
     {
+        $query = Letter::incoming()
+            ->orderBy('agenda_number', 'desc');
+
+        if ($request->status == 'undisposed') {
+            $query->whereDoesntHave('dispositions');
+        }
+
+        $data = $query->render($request->search);
+        
         return view('pages.transaction.incoming.index', [
-            'data' => Letter::incoming()->render($request->search),
+            'data' => $data,
             'search' => $request->search,
+            'status' => $request->status,
         ]);
     }
 
@@ -42,12 +52,17 @@ class IncomingLetterController extends Controller
      */
     public function agenda(Request $request): View
     {
+        $sort = $request->get('sort', 'agenda_number');
+        $direction = $request->get('direction', 'desc');
+
         return view('pages.transaction.incoming.agenda', [
-            'data' => Letter::incoming()->agenda($request->since, $request->until, $request->filter)->render($request->search),
+            'data' => Letter::incoming()->agenda($request->since, $request->until, $request->filter)->orderBy($sort, $direction)->render($request->search),
             'search' => $request->search,
             'since' => $request->since,
             'until' => $request->until,
             'filter' => $request->filter,
+            'sort' => $sort,
+            'direction' => $direction,
             'query' => $request->getQueryString(),
         ]);
     }
@@ -79,8 +94,11 @@ class IncomingLetterController extends Controller
      */
     public function create(): View
     {
+        $lastAgendaNumber = Letter::max('agenda_number');
+        $nextAgendaNumber = ($lastAgendaNumber ?? 0) + 1;
         return view('pages.transaction.incoming.create', [
             'classifications' => Classification::all(),
+            'agendaNumber' => $nextAgendaNumber,
         ]);
     }
 

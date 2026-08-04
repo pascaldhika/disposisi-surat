@@ -55,7 +55,17 @@
             <table class="table">
                 <thead>
                 <tr>
-                    <th>{{ __('model.letter.agenda_number') }}</th>
+                    <th>
+                        <a href="{{ request()->fullUrlWithQuery([
+                            'sort' => 'agenda_number',
+                            'direction' => $sort == 'agenda_number' && $direction == 'asc' ? 'desc' : 'asc'
+                        ]) }}">
+                            {{ __('model.letter.agenda_number') }}
+                            @if($sort == 'agenda_number')
+                                {!! $direction == 'asc' ? '▲' : '▼' !!}
+                            @endif
+                        </a>
+                    </th>
                     <th>{{ __('model.letter.reference_number') }}</th>
                     <th>{{ __('model.letter.from') }}</th>
                     <th>{{ __('model.letter.letter_date') }}</th>
@@ -85,12 +95,12 @@
                     </tbody>
                 @endif
                 <tfoot class="table-border-bottom-0">
-                <tr>
+                <!-- <tr>
                     <th>{{ __('model.letter.agenda_number') }}</th>
                     <th>{{ __('model.letter.reference_number') }}</th>
                     <th>{{ __('model.letter.from') }}</th>
                     <th>{{ __('model.letter.letter_date') }}</th>
-                </tr>
+                </tr> -->
                 </tfoot>
             </table>
         </div>

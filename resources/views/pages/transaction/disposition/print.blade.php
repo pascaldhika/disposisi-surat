@@ -15,8 +15,7 @@
             font-size: 12px;
         }
 
-        strong,
-        b {
+        strong{
             display: none !important;
         }
 
@@ -136,21 +135,21 @@
         <tr>
             <td width="50%">
                 <strong>Surat Dari:</strong><br><br>
-                {{ $letter->from }}<br><br><br><br>
+                <b>{{ $letter->from }}</b><br><br><br><br>
 
                 <strong>Nomor Surat:</strong><br>
-                {{ $letter->reference_number }}<br><br>
+                <b>{{ $letter->reference_number }}</b><br><br>
 
                 <strong>Tgl. Surat:</strong><br>
-                {{ $letter->formatted_letter_date }}
+                <b>{{ $letter->formatted_letter_date }}</b>
             </td>
 
             <td width="50%">
                 <strong>Diterima Tgl:</strong><br><br>
-                {{ $letter->formatted_received_date }}<br><br><br><br>
+                <b>{{ $letter->formatted_received_date }}</b><br><br><br><br>
 
                 <strong>Nomor Agenda:</strong><br>
-                {{ $letter->agenda_number }}<br><br>
+                <b>{{ $letter->agenda_number }}</b><br><br>
 
                 <strong>Sifat:</strong><br>
 
@@ -184,7 +183,7 @@
                 <strong>Hal:</strong><br><br>
 
                 <div style="padding-left: 50px;">
-                    {!! nl2br(e(wordwrap($letter->description, 30, "\n", true))) !!}
+                    <b>{!! nl2br(e(wordwrap($letter->description, 30, "\n", true))) !!}</b>
                 </div>
             </td>
         </tr>
@@ -210,16 +209,16 @@
                 <div style="float:right; width: 290px; text-align:center;">
                     <strong>Kepala UPT PPD</strong><br>
                     <div style="margin-top: 40px;">
-                        PONOROGO
+                        <b>PONOROGO</b>
                     </div>
 
                     <img class="signature"
                         src="{{ route('files.show', ['path' => 'attachments/ttd_kupt.png']) }}"
                         alt="Tanda tangan">
 
-                    Sartono, S.Sos<br>
-                    Pembina (IV/a)<br>
-                    NIP. 196808031997031004
+                    <b>Sartono, S.Sos</b><br>
+                    <b>Pembina Tingkat I (IV/b)</b><br>
+                    <b>NIP. 196808031997031004</b>
                 </div>
             </td>
         </tr>

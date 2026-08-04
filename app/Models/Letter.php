@@ -95,7 +95,8 @@ class Letter extends Model
                 ->where('reference_number', $find)
                 ->orWhere('agenda_number', $find)
                 ->orWhere('from', 'LIKE', $find . '%')
-                ->orWhere('to', 'LIKE', $find . '%');
+                ->orWhere('to', 'LIKE', $find . '%')
+                ->orWhere('description', 'LIKE', '%' . $find . '%');
         });
     }
 
