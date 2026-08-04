@@ -111,8 +111,7 @@
                 display: none;
             }
 
-            strong,
-            b {
+            strong{
                 display: none !important;
             }
         }
@@ -213,7 +212,7 @@
                     </div>
 
                     <img class="signature"
-                        src="{{ route('files.show', ['path' => 'attachments/ttd_kupt.png']) }}"
+                        src="{{ route('files.show', ['path' => 'attachments/ttd_kupt.png']) }}?v=1"
                         alt="Tanda tangan">
 
                     <b>Sartono, S.Sos</b><br>
