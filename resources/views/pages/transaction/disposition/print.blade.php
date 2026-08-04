@@ -152,23 +152,23 @@
 
                 <strong>Sifat:</strong><br>
 
-                <div style="display: flex; align-items: center; margin-top: 6px;">
-                    <div style="white-space: nowrap; margin-left: -10px; position: relative; top: -10px;">
-                        <span class="checkbox" style="border: none !important;">
+                <div style="display: flex; align-items: center;">
+                    <div style="white-space: nowrap; margin-left: -8px; position: relative; top: -10px;">
+                        <span class="checkbox" style="border: none !important; font-size: 30px;">
                             {{ $data->letter_status === 1 ? '✓' : '' }}
                         </span>
                         <span style="visibility: hidden;">Sangat Segera</span>
                     </div>
 
-                    <div style="white-space: nowrap; margin-left: 50px; position: relative; top: -10px;">
-                        <span class="checkbox" style="border: none !important;">
+                    <div style="white-space: nowrap; margin-left: 48px; position: relative; top: -10px;">
+                        <span class="checkbox" style="border: none !important; font-size: 30px;">
                             {{ $data->letter_status === 2 ? '✓' : '' }}
                         </span>
                         <span style="visibility: hidden;">Segera</span>
                     </div>
 
-                    <div style="white-space: nowrap; margin-left: 50px; position: relative; top: -10px;">
-                        <span class="checkbox" style="border: none !important;">
+                    <div style="white-space: nowrap; margin-left: 48px; position: relative; top: -10px;">
+                        <span class="checkbox" style="border: none !important; font-size: 30px;">
                             {{ $data->letter_status === 3 ? '✓' : '' }}
                         </span>
                         <span style="visibility: hidden;">Rahasia</span>
@@ -207,7 +207,7 @@
 
                 <div style="float:right; width: 290px; text-align:center;">
                     <strong>Kepala UPT PPD</strong><br>
-                    <div style="margin-top: 40px;">
+                    <div style="margin-top: 20px;">
                         <b>PONOROGO</b>
                     </div>
 
