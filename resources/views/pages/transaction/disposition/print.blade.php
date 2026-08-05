@@ -93,7 +93,7 @@
 
         .signature {
             max-width: 110px;
-            max-height: 70px;
+            max-height: 50px;
             display: block;
             margin: 5px auto;
         }
@@ -200,28 +200,28 @@
                     );
                 @endphp
                 <div class="mb-3">
-                    <div style="white-space: nowrap; margin-left: -8px; position: relative; top: -10px; margin-bottom: 10px;">
+                    <div style="white-space: nowrap; margin-left: -10px; margin-top: 10px; position: relative; margin-bottom: 10px;">
                         <span class="checkbox" style="border: none !important; font-size: 25px;">
                             {{ in_array('Kepala Sub Bagian Tata Usaha', $selectedRecipients) ? '✓' : '' }}
                         </span>
                         <span style="visibility: hidden;">Kepala Sub Bagian Tata Usaha</span>
                     </div>
 
-                    <div style="white-space: nowrap; margin-left: -8px; position: relative; top: -10px; margin-bottom: 10px;">
+                    <div style="white-space: nowrap; margin-left: -10px; margin-top: 10px; position: relative; margin-bottom: 10px;">
                         <span class="checkbox" style="border: none !important; font-size: 25px;">
                             {{ in_array('Kepala Seksi Pendataan dan Penetapan', $selectedRecipients) ? '✓' : '' }}
                         </span>
                         <span style="visibility: hidden;">Kepala Seksi Pendataan dan Penetapan</span>
                     </div>
 
-                    <div style="white-space: nowrap; margin-left: -8px; position: relative; top: -10px; margin-bottom: 10px;">
+                    <div style="white-space: nowrap; margin-left: -10px; margin-top: 10px; position: relative; margin-bottom: 10px;">
                         <span class="checkbox" style="border: none !important; font-size: 25px;">
                             {{ in_array('Kepala Seksi Pembayaran dan Penagihan', $selectedRecipients) ? '✓' : '' }}
                         </span>
                         <span style="visibility: hidden;">Kepala Seksi Pembayaran dan Penagihan</span>
                     </div>
 
-                    <div style="white-space: nowrap; margin-left: -8px; position: relative; top: -10px; margin-bottom: 10px;">
+                    <div style="white-space: nowrap; margin-left: -10px; margin-top: 10px; position: relative; margin-bottom: 10px;">
                         <span class="checkbox" style="border: none !important; font-size: 25px;">
                             {{ in_array('PDPP Samsat', $selectedRecipients) ? '✓' : '' }}
                         </span>
@@ -247,7 +247,7 @@
 
                 <div style="float:right; width: 290px; text-align:center;">
                     <strong>Kepala UPT PPD</strong><br>
-                    <div style="margin-top: 30px;">
+                    <div style="margin-top: 40px;"> 
                         <b>PONOROGO</b>
                     </div>
 
