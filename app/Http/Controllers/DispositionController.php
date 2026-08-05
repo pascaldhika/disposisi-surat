@@ -61,6 +61,8 @@ class DispositionController extends Controller
             $newDisposition['to'] = '[]';
             $newDisposition['user_id'] = auth()->user()->id;
             $newDisposition['letter_id'] = $letter->id;
+            $newDisposition['recipient'] = json_encode($request->recipients);
+
             Disposition::create($newDisposition);
             return redirect()
                 ->route('transaction.disposition.index', $letter)
@@ -97,7 +99,9 @@ class DispositionController extends Controller
     public function update(UpdateDispositionRequest $request, Letter $letter, Disposition $disposition): RedirectResponse
     {
         try {
-            $disposition->update($request->validated());
+            $data = $request->validated();
+            $data['recipient'] = json_encode($request->input('recipients', []));
+            $disposition->update($data);
             return back()->with('success', __('menu.general.success'));
         } catch (\Throwable $exception) {
             return back()->with('error', $exception->getMessage());

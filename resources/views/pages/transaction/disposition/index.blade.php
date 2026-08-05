@@ -5,7 +5,7 @@
         :values="[__('menu.transaction.menu'), $letter->reference_number, __('menu.transaction.disposition_letter')]">
 
         @if(auth()->user()->role == 'admin')
-        <a href="{{ route('transaction.disposition.create', $letter) }}" class="btn btn-primary">{{ __('menu.general.create') }}</a>
+        <a href="{{ route('transaction.disposition.create', $letter) }}" class="btn btn-primary">{{ __('menu.general.create_disposisi') }}</a>
         @endif
     </x-breadcrumb>
 

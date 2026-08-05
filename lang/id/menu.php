@@ -56,6 +56,7 @@ return [
         'penerima' => 'Penerima',
         'belum_disposisi' => 'Tampilkan Surat Belum Disposisi',
         'semua_surat' => 'Tampilkan Semua Surat',
+        'create_disposisi' => 'Tambah Disposisi Baru',
     ],
     'auth' => [
         'login' => 'Masuk',

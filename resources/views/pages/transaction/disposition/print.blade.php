@@ -154,21 +154,21 @@
 
                 <div style="display: flex; align-items: center;">
                     <div style="white-space: nowrap; margin-left: -8px; position: relative; top: -10px;">
-                        <span class="checkbox" style="border: none !important; font-size: 30px;">
+                        <span class="checkbox" style="border: none !important; font-size: 25px;">
                             {{ $data->letter_status === 1 ? '✓' : '' }}
                         </span>
                         <span style="visibility: hidden;">Sangat Segera</span>
                     </div>
 
                     <div style="white-space: nowrap; margin-left: 48px; position: relative; top: -10px;">
-                        <span class="checkbox" style="border: none !important; font-size: 30px;">
+                        <span class="checkbox" style="border: none !important; font-size: 25px;">
                             {{ $data->letter_status === 2 ? '✓' : '' }}
                         </span>
                         <span style="visibility: hidden;">Segera</span>
                     </div>
 
                     <div style="white-space: nowrap; margin-left: 48px; position: relative; top: -10px;">
-                        <span class="checkbox" style="border: none !important; font-size: 30px;">
+                        <span class="checkbox" style="border: none !important; font-size: 25px;">
                             {{ $data->letter_status === 3 ? '✓' : '' }}
                         </span>
                         <span style="visibility: hidden;">Rahasia</span>
@@ -189,7 +189,47 @@
 
         <tr>
             <td width="55%" style="height: 150px;">
-                
+                <strong>Diteruskan kepada Sdr. :</strong><br>
+
+                @php
+                    $selectedRecipients = old(
+                        'recipients',
+                        $data->recipient
+                            ? json_decode($data->recipient, true)
+                            : []
+                    );
+                @endphp
+                <div class="mb-3">
+                    <div style="white-space: nowrap; margin-left: -8px; position: relative; top: -10px; margin-bottom: 10px;">
+                        <span class="checkbox" style="border: none !important; font-size: 25px;">
+                            {{ in_array('Kepala Sub Bagian Tata Usaha', $selectedRecipients) ? '✓' : '' }}
+                        </span>
+                        <span style="visibility: hidden;">Kepala Sub Bagian Tata Usaha</span>
+                    </div>
+
+                    <div style="white-space: nowrap; margin-left: -8px; position: relative; top: -10px; margin-bottom: 10px;">
+                        <span class="checkbox" style="border: none !important; font-size: 25px;">
+                            {{ in_array('Kepala Seksi Pendataan dan Penetapan', $selectedRecipients) ? '✓' : '' }}
+                        </span>
+                        <span style="visibility: hidden;">Kepala Seksi Pendataan dan Penetapan</span>
+                    </div>
+
+                    <div style="white-space: nowrap; margin-left: -8px; position: relative; top: -10px; margin-bottom: 10px;">
+                        <span class="checkbox" style="border: none !important; font-size: 25px;">
+                            {{ in_array('Kepala Seksi Pembayaran dan Penagihan', $selectedRecipients) ? '✓' : '' }}
+                        </span>
+                        <span style="visibility: hidden;">Kepala Seksi Pembayaran dan Penagihan</span>
+                    </div>
+
+                    <div style="white-space: nowrap; margin-left: -8px; position: relative; top: -10px; margin-bottom: 10px;">
+                        <span class="checkbox" style="border: none !important; font-size: 25px;">
+                            {{ in_array('PDPP Samsat', $selectedRecipients) ? '✓' : '' }}
+                        </span>
+                        @if(in_array('PDPP Samsat', $selectedRecipients))
+                        <span style="margin-left: 8px;">PDPP Samsat</span>
+                        @endif
+                    </div>
+                </div>
             </td>
 
             <td colspan="2">

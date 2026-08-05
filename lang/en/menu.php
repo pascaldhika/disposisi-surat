@@ -53,9 +53,10 @@ return [
         'success' => 'Success',
         'fail' => 'Fail',
         'doesnt_exists' => ":attribute doesn't exists",
-        'receiver' => 'Receiver',
-        'without_disposition' => 'Show Letters Without Disposition',
-        'all_letters' => 'Show All Letters',
+        'penerima' => 'Receiver',
+        'belum_disposisi' => 'Show Letters Without Disposition',
+        'semua_surat' => 'Show All Letters',
+        'create_disposisi' => 'Tambah Disposisi Baru',
     ],
     'auth' => [
         'login' => 'Login',

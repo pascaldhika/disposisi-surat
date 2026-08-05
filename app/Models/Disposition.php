@@ -18,7 +18,8 @@ class Disposition extends Model
         'note',
         'letter_status',
         'letter_id',
-        'user_id'
+        'user_id',
+        'recipient',
     ];
 
     protected $appends = [
