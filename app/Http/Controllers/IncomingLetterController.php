@@ -94,8 +94,10 @@ class IncomingLetterController extends Controller
      */
     public function create(): View
     {
-        $lastAgendaNumber = Letter::max('agenda_number');
-        $nextAgendaNumber = ($lastAgendaNumber ?? 0) + 1;
+        $lastAgendaNumber = Letter::where('type', 'incoming')
+            ->orderByRaw('CAST(agenda_number AS UNSIGNED) DESC')
+            ->first();
+        $nextAgendaNumber = ($lastAgendaNumber) ? $lastAgendaNumber->agenda_number + 1 : 0;
         return view('pages.transaction.incoming.create', [
             'classifications' => Classification::all(),
             'agendaNumber' => $nextAgendaNumber,

@@ -75,8 +75,13 @@ class OutgoingLetterController extends Controller
      */
     public function create(): View
     {
+        $lastAgendaNumber = Letter::where('type', 'outgoing')
+            ->orderByRaw('CAST(agenda_number AS UNSIGNED) DESC')
+            ->first();
+        $nextAgendaNumber = ($lastAgendaNumber) ? $lastAgendaNumber->agenda_number + 1 : 0;
         return view('pages.transaction.outgoing.create', [
             'classifications' => Classification::all(),
+            'agendaNumber' => $nextAgendaNumber,
         ]);
     }
 
