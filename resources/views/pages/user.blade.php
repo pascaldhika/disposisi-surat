@@ -53,6 +53,7 @@
                                     class="badge bg-label-primary me-1">{{  __('model.user.' . ($user->is_active ? 'active' : 'nonactive')) }}</span>
                             </td>
                             <td>
+                                @if($user->role == 'staff')
                                 <button class="btn btn-info btn-sm btn-edit"
                                         data-id="{{ $user->id }}"
                                         data-name="{{ $user->name }}"
@@ -69,6 +70,7 @@
                                     <button class="btn btn-danger btn-sm btn-delete"
                                             type="button">{{ __('menu.general.delete') }}</button>
                                 </form>
+                                @endif
                             </td>
                         </tr>
                     @endforeach

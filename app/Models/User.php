@@ -91,7 +91,7 @@ class User extends Authenticatable
     {
         return $query
             ->search($search)
-            ->role(Role::STAFF)
+            // ->role(Role::STAFF)
             ->paginate(Config::getValueByCode(ConfigEnum::PAGE_SIZE))
             ->appends([
                 'search' => $search,
