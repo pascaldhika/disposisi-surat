@@ -13,7 +13,7 @@
             },
             series: [{
                 name: '{{ __('dashboard.letter_transaction') }}',
-                data: [{{ $todayIncomingLetter }},{{ $todayOutgoingLetter }},{{ $todayDispositionLetter }}]
+                data: [{{ $incomingLetter }},{{ $outgoingLetter }},{{ $dispositionLetter }}]
             }],
             stroke: {
                 curve: 'smooth',
@@ -57,67 +57,37 @@
                 </div>
             </div>
 
-            <div class="mb-4">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between flex-sm-row flex-column gap-3"
-                             style="position: relative;">
-                            <div class="">
-                                <div class="card-title">
-                                    <h5 class="text-nowrap mb-2">{{ __('dashboard.today_graphic') }}</h5>
-                                    <span class="badge bg-label-warning rounded-pill">{{ __('dashboard.today') }}</span>
-                                </div>
-                                <div class="mt-sm-auto">
-                                    @if($percentageLetterTransaction > 0)
-                                    <small class="text-success text-nowrap fw-semibold">
-                                        <i class="bx bx-chevron-up"></i> {{ $percentageLetterTransaction }}%
-                                    </small>
-                                    @elseif($percentageLetterTransaction < 0)
-                                        <small class="text-danger text-nowrap fw-semibold">
-                                            <i class="bx bx-chevron-down"></i> {{ $percentageLetterTransaction }}%
-                                        </small>
-                                    @endif
-                                    <h3 class="mb-0 display-4">{{ $todayLetterTransaction }}</h3>
-                                </div>
-                            </div>
-                            <div id="profileReportChart" style="min-height: 80px; width: 80%">
-                                <div id="today-graphic"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
         <div class="col-lg-4 col-md-4 order-1">
             <div class="row">
                 <div class="col-lg-6 col-md-12 col-6 mb-4">
                     <x-dashboard-card-simple
                         :label="__('dashboard.incoming_letter')"
-                        :value="$todayIncomingLetter"
+                        :value="$incomingLetter"
                         :daily="true"
                         color="success"
                         icon="bx-envelope"
-                        :percentage="$percentageIncomingLetter"
+                        :percentage="0"
                     />
                 </div>
                 <div class="col-lg-6 col-md-12 col-6 mb-4">
                     <x-dashboard-card-simple
                         :label="__('dashboard.outgoing_letter')"
-                        :value="$todayOutgoingLetter"
+                        :value="$outgoingLetter"
                         :daily="true"
                         color="danger"
                         icon="bx-envelope"
-                        :percentage="$percentageOutgoingLetter"
+                        :percentage="0"
                     />
                 </div>
                 <div class="col-lg-6 col-md-12 col-6 mb-4">
                     <x-dashboard-card-simple
                         :label="__('dashboard.disposition_letter')"
-                        :value="$todayDispositionLetter"
+                        :value="$dispositionLetter"
                         :daily="true"
                         color="primary"
                         icon="bx-envelope"
-                        :percentage="$percentageDispositionLetter"
+                        :percentage="0"
                     />
                 </div>
                 <div class="col-lg-6 col-md-12 col-6 mb-4">

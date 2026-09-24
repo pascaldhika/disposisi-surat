@@ -28,28 +28,19 @@ class PageController extends Controller
      */
     public function index(Request $request): View
     {
-        $todayIncomingLetter = Letter::incoming()->today()->count();
-        $todayOutgoingLetter = Letter::outgoing()->today()->count();
-        $todayDispositionLetter = Disposition::today()->count();
-        $todayLetterTransaction = $todayIncomingLetter + $todayOutgoingLetter + $todayDispositionLetter;
-
-        $yesterdayIncomingLetter = Letter::incoming()->yesterday()->count();
-        $yesterdayOutgoingLetter = Letter::outgoing()->yesterday()->count();
-        $yesterdayDispositionLetter = Disposition::yesterday()->count();
-        $yesterdayLetterTransaction = $yesterdayIncomingLetter + $yesterdayOutgoingLetter + $yesterdayDispositionLetter;
+        $incomingLetter = Letter::incoming()->count();
+        $outgoingLetter = Letter::outgoing()->count();
+        $dispositionLetter = Disposition::count();
+        $letterTransaction = $incomingLetter + $outgoingLetter + $dispositionLetter;
 
         return view('pages.dashboard', [
             'greeting' => GeneralHelper::greeting(),
             'currentDate' => Carbon::now()->isoFormat('dddd, D MMMM YYYY'),
-            'todayIncomingLetter' => $todayIncomingLetter,
-            'todayOutgoingLetter' => $todayOutgoingLetter,
-            'todayDispositionLetter' => $todayDispositionLetter,
-            'todayLetterTransaction' => $todayLetterTransaction,
+            'incomingLetter' => $incomingLetter,
+            'outgoingLetter' => $outgoingLetter,
+            'dispositionLetter' => $dispositionLetter,
+            'letterTransaction' => $letterTransaction,
             'activeUser' => User::active()->count(),
-            'percentageIncomingLetter' => GeneralHelper::calculateChangePercentage($yesterdayIncomingLetter, $todayIncomingLetter),
-            'percentageOutgoingLetter' => GeneralHelper::calculateChangePercentage($yesterdayOutgoingLetter, $todayOutgoingLetter),
-            'percentageDispositionLetter' => GeneralHelper::calculateChangePercentage($yesterdayDispositionLetter, $todayDispositionLetter),
-            'percentageLetterTransaction' => GeneralHelper::calculateChangePercentage($yesterdayLetterTransaction, $todayLetterTransaction),
         ]);
     }
 
