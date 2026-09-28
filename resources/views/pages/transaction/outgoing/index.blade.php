@@ -6,11 +6,12 @@
         <a href="{{ route('transaction.outgoing.create') }}" class="btn btn-primary">{{ __('menu.general.create') }}</a>
     </x-breadcrumb>
 
-    @foreach($data as $letter)
+    @foreach($data as $key => $letter)
         <x-letter-card
             :letter="$letter"
+            :number="($data->currentPage() - 1) * $data->perPage() + $key + 1"
         />
     @endforeach
 
-    {!! $data->appends(['search' => $search])->links() !!}
+    {!! $data->withQueryString()->links() !!}
 @endsection

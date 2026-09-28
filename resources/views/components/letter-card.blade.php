@@ -1,4 +1,83 @@
-<div class="card mb-4">
+<style>
+/* =========================================
+LETTER CARD
+========================================= */
+
+.letter-card {
+    position: relative;
+    border-radius: 16px;
+    overflow: visible;
+}
+
+/* Floating number */
+.letter-number {
+    position: absolute;
+
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    min-width: 34px;
+    height: 34px;
+
+    padding: 0 9px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #fff;
+    color: #696cff;
+
+    border: 2px solid #696cff;
+    border-radius: 999px;
+
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1;
+
+    z-index: 10;
+
+    box-shadow:
+        0 3px 8px rgba(0, 0, 0, 0.08);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background-color 0.2s ease;
+}
+
+/* Hover card */
+.letter-card:hover .letter-number {
+    transform: translateX(-50%) translateY(-2px);
+
+    background: #696cff;
+    color: #fff;
+
+    box-shadow:
+        0 5px 12px rgba(105, 108, 255, 0.25);
+}
+
+/* Hover card */
+.letter-card:hover .letter-number {
+    transform: translateY(-2px);
+
+    background: #696cff;
+    color: #fff;
+
+    box-shadow:
+        0 5px 12px rgba(105, 108, 255, 0.25);
+}
+</style>
+
+@props(['letter', 'number'])
+
+<div class="card mb-4 letter-card">
+    {{-- Nomor urut --}}
+    <div class="letter-number">
+        {{ $number }}
+    </div>
+    
     <div class="card-header pb-0">
         <div class="d-flex justify-content-between flex-column flex-sm-row">
             <div class="card-title">
