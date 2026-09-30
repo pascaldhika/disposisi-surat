@@ -255,9 +255,9 @@
                         src="{{ route('files.show', ['path' => 'attachments/ttd_kupt.png']) }}?v=1"
                         alt="Tanda tangan">
 
-                    <b>Sartono, S.Sos</b><br>
-                    <b>Pembina Tingkat I (IV/b)</b><br>
-                    <b>NIP. 196808031997031004</b>
+                    <b>ARIES NURYADHI, SH., M.SI</b><br>
+                    <b>Pembina</b><br>
+                    <b>NIP. 19681122 199602 1 001</b>
                 </div>
             </td>
         </tr>
