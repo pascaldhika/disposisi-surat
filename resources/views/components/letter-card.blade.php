@@ -75,7 +75,7 @@ LETTER CARD
 <div class="card mb-4 letter-card">
     {{-- Nomor urut --}}
     <div class="letter-number">
-        {{ $number }}
+        {{ $number?? '-' }}
     </div>
     
     <div class="card-header pb-0">
