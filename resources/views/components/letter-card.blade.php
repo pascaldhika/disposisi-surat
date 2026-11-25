@@ -87,7 +87,7 @@ LETTER CARD
                         class="text-secondary">{{ __('model.letter.agenda_number') }}:</span> {{ $letter->agenda_number }}
                     |
                     <span
-                        class="text-secondary">{{ __('model.letter.received_date') }}:</span> {{ $letter->formatted_letter_date }}
+                        class="text-secondary">{{ __('model.letter.received_date') }}:</span> {{ $letter->type == 'incoming' ? $letter->formatted_received_date : $letter->formatted_letter_date }}
                     |
                     {{ $letter->type == 'incoming' ? $letter->from : $letter->to }}
                     |
